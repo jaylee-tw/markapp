@@ -1,15 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<title>Mark App</title>
+<title>開啟 App</title>
+<script>
+const ua = navigator.userAgent || navigator.vendor;
+
+const iosUrl = "https://apps.apple.com/tw/app/%E5%AE%B6%E6%A8%82%E7%A6%8F-carrefour-tw/id1142519034";
+const androidUrl = "https://play.google.com/store/apps/details?id=com.carrefour.carrefourapp";
+const fallbackUrl = "https://www.carrefour.com.tw/";
+
+setTimeout(function () {
+  if (/iPhone|iPad|iPod/i.test(ua)) {
+    location.href = iosUrl;
+  } else if (/Android/i.test(ua)) {
+    location.href = androidUrl;
+  } else {
+    location.href = fallbackUrl;
+  }
+}, 800);
+</script>
 </head>
-
 <body>
-
-<h1>Mark App</h1>
-
-<p>正在開啟 App...</p>
-
+<h2>正在開啟家樂福 App...</h2>
+<p>若未自動跳轉，請稍候。</p>
 </body>
 </html>
