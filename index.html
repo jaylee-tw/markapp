@@ -2,53 +2,44 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<title>開啟 App</title>
+<title>下載 APP</title>
 
 <script>
-
 const iosStore =
-"https://apps.apple.com/tw/app/id123456789";
+"https://apps.apple.com/tw/app/id6779522336";
 
 const androidStore =
-"https://play.google.com/store/apps/details?id=com.example.markapp";
+"https://play.google.com/store/apps/details?id=com.mrmark.app";
 
-const appScheme =
-"markapp://";
+const website =
+"https://mrmark.com.tw";
 
-const ua = navigator.userAgent;
+window.onload = function () {
 
-function openApp(){
+    const ua = navigator.userAgent;
 
-    //先嘗試開啟 APP
-    location.href = appScheme;
+    if (/iPhone|iPad|iPod/i.test(ua)) {
 
-    //1.5 秒後未開啟則導商店
-    setTimeout(function(){
+        location.replace(iosStore);
 
-        if(/iPhone|iPad|iPod/i.test(ua))
-        {
-            location.href = iosStore;
-        }
-        else if(/Android/i.test(ua))
-        {
-            location.href = androidStore;
-        }
+    } else if (/Android/i.test(ua)) {
 
-    },1500);
+        location.replace(androidStore);
+
+    } else {
+
+        location.replace(website);
+
+    }
 
 }
-
-window.onload = openApp;
-
 </script>
 
 </head>
 
 <body>
 
-<h2>正在開啟 APP...</h2>
-
-若未自動跳轉請稍候
+<h2>正在導向下載頁面...</h2>
 
 </body>
 </html>
